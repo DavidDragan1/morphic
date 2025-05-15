@@ -1,0 +1,75 @@
+use_default_settings: true
+# Restrict to UK law & case‑law engines only
+use_default_settings:
+  engines:
+    keep_only:
+      - legislation
+      - find_case_law
+      - govuk_courts_tribunals
+      - bailii
+
+server:
+  # Will be overridden by ${SEARXNG_PORT} and ${SEARXNG_BIND_ADDRESS}
+  port: 8888
+  bind_address: '0.0.0.0'
+  # Public URL of the instance (overridden by ${SEARXNG_URL})
+  base_url: false
+  # Rate limiting (overridden by ${SEARXNG_LIMITER})
+  limiter: false
+  # Public‑instance features (overridden by ${SEARXNG_PUBLIC_INSTANCE})
+  public_instance: false
+
+  # Local settings file secret (overridden by ${SEARXNG_SECRET})
+  secret_key: 'ursecretkey'
+  # Proxy image results (overridden by ${SEARXNG_IMAGE_PROXY})
+  image_proxy: false
+  # Supported HTTP versions
+  http_protocol_version: '1.0'
+  # POST mode avoids URL leaks in history
+  method: 'POST'
+  default_http_headers:
+    X-Content-Type-Options: nosniff
+    X-Download-Options: noopen
+    X-Robots-Tag: noindex, nofollow
+    Referrer-Policy: no-referrer
+
+search:
+  formats:
+    - json
+
+engines:
+  - name: legislation
+    engine: legislation
+    # Legislation.gov.uk acts, SIs, consolidated texts in XML/HTML/RDF/PDF/Akoma Ntoso
+    base_url: https://www.legislation.gov.uk
+    identifier_path: /id/{type}/{year}/{number}
+    data_paths:
+      xml:   /{type}/{year}/{number}/data.xml
+      html:  /{type}/{year}/{number}/data.htm
+      rdf:   /{type}/{year}/{number}/data.rdf
+      pdf:   /{type}/{year}/{number}/data.pdf
+    categories: [law, legislation]
+    timeout: 10.0
+
+  - name: find_case_law
+    engine: find_case_law
+    # The National Archives “Find Case Law” API (LegalDocML + Atom feeds)
+    base_url: https://caselaw.nationalarchives.gov.uk
+    api_docs: https://nationalarchives.github.io/ds-find-caselaw-docs/public
+    categories: [law, case_law]
+    timeout: 10.0
+
+  - name: govuk_courts_tribunals
+    engine: govuk_ctp
+    # GOV.UK Courts & Tribunals Publishing (news, decisions, service updates)
+    api_url: https://www.gov.uk/api/news.json
+    categories: [law, tribunal, news]
+    timeout: 8.0
+
+  - name: bailii
+    engine: bailii
+    # BAILII scraping (free UK & devolved case law, legislation, reports)
+    search_url: https://www.bailii.org/search
+    categories: [law, case_law]
+    disabled: false
+    timeout: 12.0

@@ -3,20 +3,16 @@ import { ArrowRight } from 'lucide-react'
 
 const exampleMessages = [
   {
-    heading: 'What is DeepSeek R1?',
-    message: 'What is DeepSeek R1?'
+    heading: 'My landlord won\'t fix the leaky roof. What are my rights?',
+    message: 'My landlord won\'t fix the leaky roof. What are my rights?'
   },
   {
-    heading: 'Why is Nvidia growing rapidly?',
-    message: 'Why is Nvidia growing rapidly?'
+    heading: 'Help me draft a legal letter to contest a parking ticket.',
+    message: 'Help me draft a legal letter to contest a parking ticket.'
   },
   {
-    heading: 'Tesla vs Rivian',
-    message: 'Tesla vs Rivian'
-  },
-  {
-    heading: 'Summary: https://arxiv.org/pdf/2501.05707',
-    message: 'Summary: https://arxiv.org/pdf/2501.05707'
+    heading: 'Summary: https://www.legislation.gov.uk/uksi/2025/583/pdfs/uksi_20250583_en.pdf',
+    message: 'Summary: https://www.legislation.gov.uk/uksi/2025/583/pdfs/uksi_20250583_en.pdf'
   }
 ]
 export function EmptyScreen({

@@ -2,22 +2,22 @@
 
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu'
 import Link from 'next/link'
-import { SiDiscord, SiGithub, SiX } from 'react-icons/si'
+import { SiGithub, SiX } from 'react-icons/si'
 
 const externalLinks = [
   {
     name: 'X',
-    href: 'https://x.com/morphic_ai',
+    href: 'https://x.com/daviddragan377',
     icon: <SiX className="mr-2 h-4 w-4" />
   },
-  {
-    name: 'Discord',
-    href: 'https://discord.gg/zRxaseCuGq',
-    icon: <SiDiscord className="mr-2 h-4 w-4" />
-  },
+  // {
+  //   name: 'Discord',
+  //   href: 'https://discord.gg/zRxaseCuGq',
+  //   icon: <SiDiscord className="mr-2 h-4 w-4" />
+  // },
   {
     name: 'GitHub',
-    href: 'https://git.new/morphic',
+    href: 'https://github.com/DavidDragan1',
     icon: <SiGithub className="mr-2 h-4 w-4" />
   }
 ]
