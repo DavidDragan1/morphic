@@ -11,9 +11,10 @@ import type { Metadata, Viewport } from 'next'
 import { Cormorant_Garamond as FontSerif } from 'next/font/google'
 import './globals.css'
 
-const fontSans = FontSerif({
+const fontSerif = FontSerif({
+  subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
-  variable: '--font-sans'
+  variable: '--font-serif'
 })
 
 const title = 'Clause & Compass'
@@ -64,8 +65,8 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          'min-h-screen flex flex-col font-sans antialiased',
-          fontSans.variable
+          'min-h-screen flex flex-col font-serif antialiased',
+          fontSerif.variable
         )}
       >
         <ThemeProvider
